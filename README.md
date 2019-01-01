@@ -1,8 +1,10 @@
 # Pastebin
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pastebin`. To experiment with that code, run `bin/console` for an interactive prompt.
+Interface for scraping Pastebin plus command line tools.
 
-TODO: Delete this and the text above, and describe your gem
+## Requirements
+
+* Pastebin LIFETIME PRO account.  [https://pastebin.com/api_scraping_faq](https://pastebin.com/api_scraping_faq).
 
 ## Installation
 
@@ -20,9 +22,29 @@ Or install it yourself as:
 
     $ gem install pastebin
 
+## Building
+
+    $ gem build pastebin.gemspec
+
+    $ gem install pastebin-0.1.0.gem
+
 ## Usage
 
-TODO: Write usage instructions here
+```
+export PASTEBIN_API_KEY=abc123
+```
+
+Recent Pastes:
+
+```
+pastebin recent
+```
+
+Get Paste:
+
+```
+pastebin get <paste_id>
+```
 
 ## Development
 

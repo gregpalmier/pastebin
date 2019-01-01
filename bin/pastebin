@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'pastebin'
+require 'colorize'
+
+arg0 = ARGV[0]
+arg1 = ARGV[1]
+
+pastebin = Pastebin::API.new
+
+case arg0
+when 'recent'
+  begin
+    recents = pastebin.recent
+    recents.each do |r|
+      print "Full URL: #{r['full_url']} ".colorize(:yellow)
+      print "Title: #{r['title']} ".colorize(:blue)
+      print "Size: #{r['size']} ".colorize(:size)
+      print "Syntax: #{r['syntax']}".colorize(:green)
+      print "\n"
+    end
+  rescue => e
+    puts "something went wrong recent pastes"
+    puts e.colorize(:red)
+  end
+when 'get'
+  # arg1 paste_id
+  # e.g. pastebin get 1234
+  begin
+    paste = pastebin.get_paste(arg1)
+    puts paste.colorize(:blue)
+  rescue => e
+    puts "something went wrong getting paste #{arg1}"
+    puts e.colorize(:red)
+  end
+else
+  puts "I don't do that sort of thing"
+end
