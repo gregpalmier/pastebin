@@ -34,15 +34,16 @@ Or install it yourself as:
 export PASTEBIN_API_KEY=abc123
 ```
 
-Recent Pastes:
+```ruby
+pastebin = Pastebin::API.new
+recents = pastebin.recent
+paste = pastebin.get_paste('paste_id')
+```
+
+Command Line:
 
 ```
 pastebin recent
-```
-
-Get Paste:
-
-```
 pastebin get <paste_id>
 ```
 
